@@ -4,11 +4,11 @@ import List from "@material-ui/core/List";
 import AddTodoForm from "./AddTodoForm";
 import Todo from "./Todo";
 
-const TodoList = () => {
+const TodoList = ({list, setList}) => {
   return (
     <List>
       <Todo />
-      <AddTodoForm />
+      <AddTodoForm list={list} setList={setList} />
     </List>
   );
 };
