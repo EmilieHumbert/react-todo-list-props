@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input } from "@material-ui/core";
+import { generate as generateId } from "shortid";
 
 const AddListItemForm = ({ list, setList }) => {
   const [input, setInput] = useState("");
@@ -10,7 +11,7 @@ const AddListItemForm = ({ list, setList }) => {
   };
 
   const handleSubmit = () => {
-    setList([...list, { id: "id", text: input, completed: false }]);
+    setList([...list, { id: generateId(), text: input, completed: false }]);
     setInput("");
   };
 

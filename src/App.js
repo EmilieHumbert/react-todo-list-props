@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
+import { generate as generateId } from "shortid";
 
 import TodoList from "./Components/TodoList";
 import "./App.css";
@@ -20,7 +21,7 @@ function App() {
   const classes = useStyles();
 
   const [list, setList] = useState([
-    { id: "id", text: "todo example", completed: false },
+    { id: generateId(), text: "todo example", completed: false },
   ]);
 
   return (
