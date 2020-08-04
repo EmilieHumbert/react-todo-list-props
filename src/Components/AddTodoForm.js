@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { Input } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import Box from "@material-ui/core/Box";
 import { generate as generateId } from "shortid";
 
+const useStyles = makeStyles((theme) => ({
+  root: { padding: 20, textAlign: "center" },
+}));
+
 const AddListItemForm = ({ list, setList }) => {
+  const classes = useStyles();
   const [input, setInput] = useState("");
 
   const handleOnChange = (e) => setInput(e.target.value);
@@ -15,15 +23,18 @@ const AddListItemForm = ({ list, setList }) => {
   };
 
   return (
-    <div>
-      <Input
-        placeholder="todo"
-        value={input}
+    <Box className={classes.root}>
+      <TextField
+        className={classes.input}
+        edge="end"
+        margin="dense"
         onChange={handleOnChange}
         onKeyPress={(e) => e.key === "Enter" && handleSubmit()}
+        placeholder="Add new todo"
+        value={input}
       />
-      <button onClick={handleSubmit}>ENTER</button>
-    </div>
+      <AddCircleIcon color="primary" onClick={handleSubmit} />
+    </Box>
   );
 };
 
