@@ -5,24 +5,22 @@ import { generate as generateId } from "shortid";
 const AddListItemForm = ({ list, setList }) => {
   const [input, setInput] = useState("");
 
-  const handleOnChange = (e) => {
-    e.preventDefault();
-    setInput(e.target.value);
-  };
+  const handleOnChange = (e) => setInput(e.target.value);
 
   const handleSubmit = () => {
-    setList([...list, { id: generateId(), text: input, completed: false }]);
-    setInput("");
+    if (input.length >= 1) {
+      setList([...list, { id: generateId(), text: input, completed: false }]);
+      setInput("");
+    }
   };
 
   return (
     <div>
       <Input
-        placeholde="todo"
+        placeholder="todo"
         value={input}
-        onChange={(e) => {
-          handleOnChange(e);
-        }}
+        onChange={handleOnChange}
+        onKeyPress={(e) => e.key === "Enter" && handleSubmit()}
       />
       <button onClick={handleSubmit}>ENTER</button>
     </div>

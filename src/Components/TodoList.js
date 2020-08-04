@@ -1,16 +1,20 @@
 import React from "react";
-import List from "@material-ui/core/List";
 
-import AddTodoForm from "./AddTodoForm";
 import Todo from "./Todo";
 
 const TodoList = ({ list, setList }) => {
-  return (
-    <List>
-      <Todo list={list} setList={setList} />
-      <AddTodoForm list={list} setList={setList} />
-    </List>
-  );
+  const updateTodo = (todo, field, value) => {
+    const updatedTodo = { ...todo, [field]: value };
+    setList(
+      list.map((listTodo) => (listTodo === todo ? updatedTodo : listTodo))
+    );
+  };
+
+  const displayList = list.map((todo) => (
+    <Todo key={todo.id} todo={todo} updateTodo={updateTodo} />
+  ));
+
+  return <ul>{displayList}</ul>;
 };
 
 export default TodoList;

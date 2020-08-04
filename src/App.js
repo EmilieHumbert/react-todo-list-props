@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { generate as generateId } from "shortid";
 
 import TodoList from "./Components/TodoList";
+import AddTodoForm from './Components/AddTodoForm'
 import "./App.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +32,7 @@ function App() {
           Todo
         </Typography>
         <TodoList list={list} setList={setList} />
+        <AddTodoForm list={list} setList={setList} />
       </Paper>
     </Container>
   );

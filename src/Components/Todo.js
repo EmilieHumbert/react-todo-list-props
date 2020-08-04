@@ -1,16 +1,15 @@
 import React from "react";
-import { generate as generateId } from "shortid";
 
-const ListItem = ({ list, setList }) => {
+import CheckboxToggle from "./CheckboxToggle";
 
-  const displayList = list.map((listItem, index) => {
-    return <li key={generateId()}>{listItem.text}</li>;
-  });
+const Todo = ({ todo, updateTodo }) => {
+  const updateChecked = (newValue) => updateTodo(todo, "completed", newValue);
   return (
-    <div>
-      <ul>{displayList}</ul>
-    </div>
+    <li>
+      <CheckboxToggle checked={todo.completed} updateChecked={updateChecked} />
+      <span>{todo.text}</span>
+    </li>
   );
 };
 
-export default ListItem;
+export default Todo;
