@@ -10,8 +10,16 @@ const TodoList = ({ list, setList }) => {
     );
   };
 
+  const deleteTodo = (todo) =>
+    setList(list.filter((listTodo) => listTodo !== todo));
+
   const displayList = list.map((todo) => (
-    <Todo key={todo.id} todo={todo} updateTodo={updateTodo} />
+    <Todo
+      key={todo.id}
+      todo={todo}
+      updateTodo={updateTodo}
+      deleteTodo={deleteTodo}
+    />
   ));
 
   return <ul>{displayList}</ul>;
