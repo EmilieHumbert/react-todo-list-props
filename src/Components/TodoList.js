@@ -1,4 +1,5 @@
 import React from "react";
+import List from "@material-ui/core/List";
 
 import Todo from "./Todo";
 
@@ -22,7 +23,7 @@ const TodoList = ({ list, setList }) => {
     />
   ));
 
-  return <ul>{displayList}</ul>;
+  return <List>{displayList}</List>;
 };
 
 export default TodoList;

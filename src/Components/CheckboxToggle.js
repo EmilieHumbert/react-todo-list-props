@@ -7,7 +7,6 @@ const CheckboxToggle = ({ checked, handleToggle }) => {
   return (
     <Checkbox
       color="primary"
-      edge="start"
       checked={checked}
       onChange={onChange}
     />

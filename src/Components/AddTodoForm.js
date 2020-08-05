@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import Box from "@material-ui/core/Box";
 import { generate as generateId } from "shortid";
+import IconButton from "@material-ui/core/IconButton";
+import Checkbox from "@material-ui/core/Checkbox";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import { ListItem } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: { padding: 20, textAlign: "center" },
+  textField: {
+    flexGrow: 1,
+  },
 }));
 
 const AddListItemForm = ({ list, setList }) => {
@@ -23,18 +29,25 @@ const AddListItemForm = ({ list, setList }) => {
   };
 
   return (
-    <Box className={classes.root}>
+    <ListItem className={classes.root}>
+      <ListItemIcon>
+        <Checkbox disabled />
+      </ListItemIcon>
       <TextField
-        className={classes.input}
-        edge="end"
-        margin="dense"
+        className={classes.textField}
+        // margin="dense"
         onChange={handleOnChange}
         onKeyPress={(e) => e.key === "Enter" && handleSubmit()}
         placeholder="Add new todo"
         value={input}
+        // variant="outlined"
       />
-      <AddCircleIcon color="primary" onClick={handleSubmit} />
-    </Box>
+      <ListItemIcon>
+        <IconButton onClick={handleSubmit}>
+          <AddCircleIcon color="primary" />
+        </IconButton>
+      </ListItemIcon>
+    </ListItem>
   );
 };
 
